@@ -47,7 +47,7 @@ app.get('/:place', (req, res, next) => {
         url: 'https://api.twitter.com/1.1/trends/place.json?id=2379574',
         headers: { Authorization: `Bearer ${accessToken}`}
       })
-      .then(response => res.send(response))
+      .then(response => res.send(response.data[0]))
     }
     else if(req.params.place === 'nyc'){
       axios({
@@ -55,7 +55,7 @@ app.get('/:place', (req, res, next) => {
         url: 'https://api.twitter.com/1.1/trends/place.json?id=2459115',
         headers: { Authorization: `Bearer ${accessToken}`}
       })
-      .then(response => res.send(response))
+      .then(response => res.send(response.data[0]))
     }
     else if(req.params.place === 'la'){
       axios({
@@ -63,15 +63,42 @@ app.get('/:place', (req, res, next) => {
         url: 'https://api.twitter.com/1.1/trends/place.json?id=2442047',
         headers: { Authorization: `Bearer ${accessToken}`}
       })
-      .then(response => res.send(response))
+      .then(response => res.send(response.data[0]))
+    }
+    else if(req.params.place === 'silicon') {
+      axios({
+        method: 'get',
+        url: 'https://api.twitter.com/1.1/trends/place.json?id=23511745',
+        headers: { Authorization: `Bearer ${accessToken}`}
+      })
+      .then(response => res.send(response.data[0]))
+    }
+    else if(req.params.place === 'seattle') {
+      axios({
+        method: 'get',
+        url: 'https://api.twitter.com/1.1/trends/place.json?id=2490383',
+        headers: { Authorization: `Bearer ${accessToken}`}
+      })
+      .then(response => res.send(response.data[0]))
+    }
+    else if(req.params.place === 'paris'){
+      axios({
+        method: 'get',
+        url: 'https://api.twitter.com/1.1/trends/place.json?id=615702',
+        headers: { Authorization: `Bearer ${accessToken}`}
+      })
+      .then(response => res.send(response.data[0]))
+    }
+    else if(req.params.place === 'london'){
+      axios({
+        method: 'get',
+        url: 'https://api.twitter.com/1.1/trends/place.json?id=44418',
+        headers: { Authorization: `Bearer ${accessToken}`}
+      })
+      .then(response => res.send(response.data[0]))
     }
   })
 })
-
-
-
-
-
 
 app.use((err, req, res, next) =>{
   if(err){

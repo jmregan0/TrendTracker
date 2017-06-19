@@ -44,11 +44,11 @@ export default class App extends Component {
     })
   }
 
-
   onGroupingChanged = (newGrouping) => {
     this.setState({
-      grouping: newGrouping,
+      data: newGrouping,
     })
+    this.forceUpdate()
   }
 
   render() {
