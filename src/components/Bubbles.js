@@ -21,12 +21,13 @@ export default class Bubbles extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.data !== this.props.data) {
-      this.renderBubbles(nextProps.data)
-    }
-    if (nextProps.groupByYear !== this.props.groupByYear) {
-      this.regroupBubbles(nextProps.groupByYear)
-    }
+    // if (nextProps.data !== this.props.data) {
+    //   this.renderBubbles(nextProps.data)
+    // }
+    // if (nextProps.groupByYear !== this.props.groupByYear) {
+    //   this.regroupBubbles(nextProps.groupByYear)
+    // }
+    this.renderBubbles(nextProps.data)
   }
 
   shouldComponentUpdate() {

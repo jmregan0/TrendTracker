@@ -65,14 +65,6 @@ app.get('/:place', (req, res, next) => {
       })
       .then(response => res.send(response.data[0]))
     }
-    else if(req.params.place === 'silicon') {
-      axios({
-        method: 'get',
-        url: 'https://api.twitter.com/1.1/trends/place.json?id=23511745',
-        headers: { Authorization: `Bearer ${accessToken}`}
-      })
-      .then(response => res.send(response.data[0]))
-    }
     else if(req.params.place === 'seattle') {
       axios({
         method: 'get',
@@ -93,6 +85,14 @@ app.get('/:place', (req, res, next) => {
       axios({
         method: 'get',
         url: 'https://api.twitter.com/1.1/trends/place.json?id=44418',
+        headers: { Authorization: `Bearer ${accessToken}`}
+      })
+      .then(response => res.send(response.data[0]))
+    }
+    else if(req.params.place === 'tokyo'){
+      axios({
+        method: 'get',
+        url: 'https://api.twitter.com/1.1/trends/place.json?id=1118370',
         headers: { Authorization: `Bearer ${accessToken}`}
       })
       .then(response => res.send(response.data[0]))

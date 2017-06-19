@@ -12,7 +12,7 @@ import * as d3 from 'd3'
    * array for each element in the rawData input.
    */
 export function createNodes(rawData) {
-  const trendData = rawData.data.trends
+  const trendData = rawData.data.trends.filter(item => { return item.tweet_volume > 0})
     // Use the max total_amount in the data as the max in the scale's domain
     // note we have to ensure the total_amount is a number.
   const maxAmount = d3.max(trendData, d => +d.tweet_volume)
@@ -30,8 +30,8 @@ export function createNodes(rawData) {
   const myNodes = trendData.map((d, index) => {
       return {
         id: '' + index,
-        radius: radiusScale(+d.tweet_volume),
-        value: +d.tweet_volume,
+        radius: radiusScale(d.tweet_volume),
+        value: d.tweet_volume,
         name: d.name,
         x: Math.random() * 900,
         y: Math.random() * 800

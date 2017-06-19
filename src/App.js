@@ -16,8 +16,6 @@ export default class App extends Component {
     grouping: 'all',
   }
 
-  componentDidMount() {
-
     /*
 
     Instead of setting up another server running on a separate port to be used as a proxy,
@@ -33,6 +31,8 @@ export default class App extends Component {
 
     */
 
+  componentDidMount() {
+
     axios({
       method: 'get',
       url: 'http://localhost:3001/global'
@@ -44,12 +44,14 @@ export default class App extends Component {
     })
   }
 
+
   onGroupingChanged = (newGrouping) => {
     this.setState({
       data: newGrouping,
     })
     this.forceUpdate()
   }
+
 
   render() {
     const { data, grouping } = this.state

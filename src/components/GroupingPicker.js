@@ -14,7 +14,7 @@ export default class GroupingPicker extends React.Component {
 
 
   onChicagoClick = (event) => {
-    event.preventDefault();
+    event.preventDefault(event);
     axios({
       method: 'get',
       url: 'http://localhost:3001/chicago'
@@ -26,7 +26,7 @@ export default class GroupingPicker extends React.Component {
   }
 
   onNyClick = (event) => {
-    event.preventDefault();
+    event.preventDefault(event);
     axios({
       method: 'get',
       url: 'http://localhost:3001/nyc'
@@ -37,7 +37,7 @@ export default class GroupingPicker extends React.Component {
   }
 
   onLaClick = (event) => {
-    event.preventDefault();
+    event.preventDefault(event);
     axios({
       method: 'get',
       url: 'http://localhost:3001/la'
@@ -47,19 +47,8 @@ export default class GroupingPicker extends React.Component {
     })
   }
 
-  onSiliconClick = (event) => {
-    event.preventDefault();
-    axios({
-      method: 'get',
-      url: 'http://localhost:3001/silicon'
-    })
-    .then(result => {
-        this.props.onChanged(createNodes(result))
-    })
-  }
-
   onSeattleClick = (event) => {
-    event.preventDefault();
+    event.preventDefault(event);
     axios({
       method: 'get',
       url: 'http://localhost:3001/seattle'
@@ -70,7 +59,7 @@ export default class GroupingPicker extends React.Component {
   }
 
   onParisClick = (event) => {
-    event.preventDefault();
+    event.preventDefault(event);
     axios({
       method: 'get',
       url: 'http://localhost:3001/paris'
@@ -81,10 +70,32 @@ export default class GroupingPicker extends React.Component {
   }
 
    onLondonClick = (event) => {
-    event.preventDefault();
+    event.preventDefault(event);
     axios({
       method: 'get',
       url: 'http://localhost:3001/london'
+    })
+    .then(result => {
+        this.props.onChanged(createNodes(result))
+    })
+  }
+
+  onGlobalClick = (event) => {
+    event.preventDefault(event);
+    axios({
+      method: 'get',
+      url: 'http://localhost:3001/global'
+    })
+    .then(result => {
+        this.props.onChanged(createNodes(result))
+    })
+  }
+
+  onTokyoclick = (event) => {
+    event.preventDefault(event);
+    axios({
+      method: 'get',
+      url: 'http://localhost:3001/tokyo'
     })
     .then(result => {
         this.props.onChanged(createNodes(result))
@@ -95,13 +106,14 @@ export default class GroupingPicker extends React.Component {
     const { active } = this.props
     return (
       <div className="GroupingPicker">
+        <button  onClick={this.onGlobalClick}>Global</button>
         <button  onClick={this.onChicagoClick}>Chicago</button>
         <button  onClick={this.onNyClick}>New York City</button>
         <button  onClick={this.onLaClick}>Los Angeles</button>
-        <button  onClick={this.onSiliconClick}>Silicon Valley</button>
         <button  onClick={this.onSeattleClick}>Seattle</button>
         <button  onClick={this.onParisClick}>Paris</button>
         <button  onClick={this.onLondonClick}>London</button>
+        <button  onClick={this.onTokyoclick}>Tokyo</button>
       </div>
     )
   }
